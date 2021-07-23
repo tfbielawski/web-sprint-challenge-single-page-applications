@@ -20,11 +20,11 @@ export default function Home()
     //Define routeToShop function
     const routeToForm = () => 
     {
-        //Log history
-        console.log(history);
+      //Log history
+      console.log(history);
 
-        //push the history to pizza list
-        history.push("pizza");
+      //push the history to pizza list
+      history.push("pizza");
     }
 
     //Return function

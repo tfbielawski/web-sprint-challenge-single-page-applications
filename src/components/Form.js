@@ -50,50 +50,19 @@ const Form = ()  =>
     //Define form schema
     const formSchema = yup.object().shape
     ({
-        // //Name value: string, min params
-        name: yup.string().min(2,"Must be at least 2 characters"),
+        //Name value: string, min params
+        name: yup.string().min(2,"name must be at least 2 characters"),
         
         //Size value: string, oneOf params
         size: yup.string().oneOf(["s", "m", "l"], "please select a size"),
         
-        // //Toppings: string
+        //Toppings: string
         special: yup.string(),
         meat: yup.string(),
         veggies: yup.string(),
         poultry: yup.string(),
         fruit: yup.string(),
     });
-
-
-    // //Change validation function definition, pass in event object
-    // const changeValidator = (event) =>
-    // {
-    //     yup 
-    //         //Reach formSchema and event
-    //         .reach(formSchema, event.target.name)
-            
-          
-    //         .validate(event.target.type ===  "checkbox" ? event.target.checked : event.target.value)
-            
-    //         //.then setErrors
-    //         .then(() => 
-    //         {
-    //             setErrors 
-    //             ({
-    //                     ...errors, [event.target.name]: " " 
-    //             })
-    //         })   
-
-    //         //.catch, log the error, set the error
-    //         .catch((err) => 
-    //         {
-    //             console.log(err);
-    //             setErrors
-    //             ({
-    //                 ...errors, [event.target.name]: err.errors[0]
-    //             });
-    //         });
-    // };
 
 
     const changeValidator = (event) => 
@@ -158,7 +127,7 @@ const Form = ()  =>
     {
         //Prevent default behavior on submit
         event.preventDefault();
-        
+
         //Axios
         axios
         //Post to api with form payload
