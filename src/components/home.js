@@ -47,7 +47,7 @@ export default function Home()
       {/* Button with click invokes routToShop()*/}
         <button
         className = "shopButton"
-        id = "order"
+        id = "order-pizza"
         onClick={routeToForm}
         >
         ORDER PIZZA
