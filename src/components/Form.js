@@ -149,6 +149,8 @@ const Form = ()  =>
                     onChange = {changeHandler}
                     placeholder = "name goes here"
                     />
+                
+                {errors.name ? <p>{errors.name}</p> : null}
                 </label>
             </div>
 
@@ -166,6 +168,8 @@ const Form = ()  =>
                         <option value = "m">Medium</option>
                         <option value = "l">Large</option>
                     </select>
+
+                {errors.size ? <p>{errors.name}</p> : null}
                 </label>
 
                 {/* Toppings labels and checkbox choices */}
