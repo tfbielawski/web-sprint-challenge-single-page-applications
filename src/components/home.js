@@ -44,7 +44,7 @@ export default function Home()
             />
         </div>
 
-      {/* Button with click invokes routToShop()*/}
+      {/* Button with click invokes routToForm()*/}
         <button
         className = "shopButton"
         id = "order-pizza"

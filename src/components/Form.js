@@ -175,7 +175,7 @@ const Form = ()  =>
                     </select>
 
                 {/* Error reporting */}
-                {errors.size ? <p>{errors.name}</p> : null}
+                {errors.size ? <p>{errors.size}</p> : null}
                 </label>
 
                 {/* Toppings labels and checkbox choices */}
