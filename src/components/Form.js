@@ -46,7 +46,6 @@ const Form = ()  =>
     const [submitButtonState, setSubmitButtonState] = useState(false);
 
 
-
     //Define form schema
     const formSchema = yup.object().shape
     ({
@@ -65,6 +64,7 @@ const Form = ()  =>
     });
 
 
+    //Change handler function definition, pass in event object
     const changeValidator = (event) => 
     {
       yup

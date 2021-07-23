@@ -86,6 +86,8 @@ there is a key for each of the toppings and they are booleans
 
 Implement the following tests in Cypress:
 
+//COULD NOT GET CYPRESS TESTING TO WORK AT ALL. KEPT CRASHING MY TERMINAL//
+
 - [ ] test that you can add text to the box
 - [ ] test that you can select multiple toppings
 - [ ] test that you can submit the form
