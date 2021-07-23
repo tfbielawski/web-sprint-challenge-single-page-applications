@@ -41,6 +41,12 @@ const Form = ()  =>
         fruit: false,
     });
 
+
+    //Declare state variables, init to false
+    const [submitButtonState, setSubmitButtonState] = useState(false);
+
+
+
     //Define form schema
     const formSchema = yup.object().shape
     ({
@@ -59,39 +65,62 @@ const Form = ()  =>
     });
 
 
-    //Change validation function definition, pass in event object
-    const changeValidator = (event) =>
-    {
-        yup 
-            //Reach formSchema and event
-            .reach(formSchema, event.target.name)
+    // //Change validation function definition, pass in event object
+    // const changeValidator = (event) =>
+    // {
+    //     yup 
+    //         //Reach formSchema and event
+    //         .reach(formSchema, event.target.name)
             
-            //Validate checkbox
-            .validate(event.target.type ===  "checkbox" ? event.target.checked : event.target.value)
+          
+    //         .validate(event.target.type ===  "checkbox" ? event.target.checked : event.target.value)
             
-            //.then setErrors
-            .then(() => 
-            {
-                setErrors 
-                ({
-                        ...errors, [event.target.name]: " " 
-                })
-            })   
+    //         //.then setErrors
+    //         .then(() => 
+    //         {
+    //             setErrors 
+    //             ({
+    //                     ...errors, [event.target.name]: " " 
+    //             })
+    //         })   
 
-            //.catch, log the error, set the error
-            .catch((err) => 
-            {
-                console.log(err);
-                setErrors
-                ({
-                    ...errors, [event.target.name]: err.errors[0]
-                });
-            });
+    //         //.catch, log the error, set the error
+    //         .catch((err) => 
+    //         {
+    //             console.log(err);
+    //             setErrors
+    //             ({
+    //                 ...errors, [event.target.name]: err.errors[0]
+    //             });
+    //         });
+    // };
+
+
+    const changeValidator = (event) => 
+    {
+      yup
+        //Reach formSchema and event
+        .reach(formSchema, event.target.name)
+        
+        //Validate checkbox
+        .validate(
+          event.target.type === "checkbox" ? event.target.checked : event.target.value
+        )
+        
+        //.then setErrors
+        .then(() => 
+        {
+          setErrors({ ...errors, [event.target.name]: "" });
+        })
+        
+        //.catch, log the error, set the error
+        .catch((error) => 
+        {
+          setErrors({ ...errors, [event.target.name]: error.errors[0] });
+        });
     };
 
-     //Declare state variables, init to false
-     const [submitButtonState, setSubmitButtonState] = useState(false);
-
+     
     //formSchema useEffect
     useEffect(() => 
     {
@@ -101,22 +130,28 @@ const Form = ()  =>
         });
 
         //Dependency arrays
-    }, [form, formSchema]);
+    }, [form]);
 
 
 
     //Change event handler
     const changeHandler = (event) =>
     {
+        //Event.persist 
         event.persist();
+
+        //Call change validator, pass in event
         changeValidator(event);
+
+        //Set form
         setForm
         ({
+            //Spread operator, target
             ...form, [event.target.name]: 
             event.target.type ===  "checkbox" ? event.target.checked : event.target.value
-        })
+        });
 
-    }
+    };
 
     //Submit handler
     const submitHandler = (event) =>
