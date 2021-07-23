@@ -155,7 +155,8 @@ const Form = ()  =>
                     placeholder = "name goes here"
                     />
                 {/* Error reporting */}
-                {errors.name ? <p>{errors.name}</p> : null}
+                {/* {errors.name ? <p>{errors.name}</p> : null} */}
+                <p>{errors.name}</p>
                 </label>
             </div>
 
@@ -175,7 +176,8 @@ const Form = ()  =>
                     </select>
 
                 {/* Error reporting */}
-                {errors.size ? <p>{errors.size}</p> : null}
+                {/* {errors.size ? <p>{errors.size}</p> : null} */}
+                <p>{errors.size}</p> 
                 </label>
 
                 {/* Toppings labels and checkbox choices */}
