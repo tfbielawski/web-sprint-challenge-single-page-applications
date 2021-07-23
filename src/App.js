@@ -7,10 +7,12 @@
  */
 
 //Import statements
-import React, {useState, useEffect} from "react";
-//import { Route, Link, Switch, Redirect } from 'react-router-dom'
-import { Route, Link, Switch} from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
+import pizza from "./components/form";
+import home from "./components/home";
 
+
+//write a named style and rename divs below
 
 //App() function definition, pass in callback 
 const App = () => 
@@ -18,11 +20,18 @@ const App = () =>
   //Return function
   return (
     <>
-      <Switch>
-        <Link to = "/">Home</Link>
-        <h1>Lambda Eats</h1>
-        <p></p>
-      </Switch>
+    <div className = "head">
+      <h1 className = "h">Lambda Eats</h1>
+      <h2 className = "h">Get your coding pizza here!</h2>
+    </div>
+
+    {/* Switch case */}
+    <Switch>
+      {/* <Route path = "/pizza" component = {pizza}/>
+
+      <Route path = "/" component = {home}/> */}
+
+    </Switch>
     </>
   );
 };

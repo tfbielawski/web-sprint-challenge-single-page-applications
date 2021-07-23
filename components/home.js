@@ -1,6 +1,12 @@
+/**
+ * Tom Bielawski
+ * Lambda School WEB45
+ * 2.3.5 web-sprint-challenge-single-page-applications 
+ * home.js
+ * 7/23/2021
+ */
 
-
-
+//Import statements
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import logo from "../Assets/Pizza.jpg"
@@ -9,10 +15,10 @@ import logo from "../Assets/Pizza.jpg"
 export default function Home()
 {
     //Assign useHistory function 
-    const history = useHistory()
-    
+    const history = useHistory();
+
     //Define routeToShop function
-    const routeToShop = () => 
+    const routeToForm = () => 
     {
         //Log history
         console.log(history);
@@ -26,19 +32,23 @@ export default function Home()
     //Main div
     <div className = "home-wrapper">
 
-        {/* Pizza photo from assets */}
-      <img
-        className = "home-image"
-        src = {logo}
-        alt = "Pizza"
-      />
+        {/* Image div */}
+        <div className = "image">
+            
+            {/* Pizza photo from assets */}
+            <img
+            className = "home-image"
+            src = {logo}
+            alt = "Pizza"
+            />
+        </div>
 
       {/* Button with click invokes routToShop()*/}
-      <button
+        <button
         className = "shopButton"
         id = "order"
-        onClick={routeToShop}
-      >
+        onClick={routeToForm}
+        >
         ORDER PIZZA
       </button>
     </div>
