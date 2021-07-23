@@ -1,0 +1,44 @@
+form 
+{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    background-color: beige;
+    margin: 10%;
+    
+}
+
+.label
+{
+    display: flex;
+    flex-direction: column;
+    padding-right: 5%;
+    padding-bottom: 1vh;
+}
+
+.box
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.choices
+{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    align-items: left;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    
+}
+
+#order-button
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20%;
+    text-align: center;
+}

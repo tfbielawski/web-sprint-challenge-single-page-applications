@@ -10,6 +10,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import * as yup from "yup";
+import "./Form.css"
 
 //Main function definition, empty () param
 const Form = ()  =>
@@ -43,19 +44,18 @@ const Form = ()  =>
     //Define form schema
     const formSchema = yup.object().shape
     ({
-        //Name value: string, min params
+        // //Name value: string, min params
         name: yup.string().min(2,"Must be at least 2 characters"),
         
         //Size value: string, oneOf params
-        size: yup.string().oneOf("s", "m", "l"),
+        size: yup.string().oneOf(["s", "m", "l"], "please select a size"),
         
-        //Toppings: string
+        // //Toppings: string
         special: yup.string(),
         meat: yup.string(),
         veggies: yup.string(),
         poultry: yup.string(),
         fruit: yup.string(),
-
     });
 
 
@@ -134,11 +134,13 @@ const Form = ()  =>
 
     //Return function
     return(
+        
         // Begin form
         <form id = "pizza-form" onSubmit = {submitHandler} >
-            <div className = "name">
+           
+            <div className = "choices">
                 {/* Name label and input */}
-                <label htmlFor = "name"> Name:
+                <label className = "label" htmlFor = "name"> Name:
                     <input
                     type = "text"
                     id = "name-input"
@@ -152,7 +154,7 @@ const Form = ()  =>
 
             <div className = "choices">
                 {/* Size label and select for dropdown choices*/}
-                <label htmlFor = "size"> Size
+                <label className = "label" htmlFor = "size"> Size: 
                     <select 
                     id = "size-dropdown"
                     name = "size"
@@ -162,14 +164,14 @@ const Form = ()  =>
                         <option value = "">***Choose Your Size***!</option>
                         <option value = "s">Small</option>
                         <option value = "m">Medium</option>
-                        <option value = "l">CLarge</option>
+                        <option value = "l">Large</option>
                     </select>
                 </label>
 
                 {/* Toppings labels and checkbox choices */}
                 {/* Meat Checkbox*/}
-                <label htmlFor = "meat">
-                    <input
+                <label htmlFor = "meat"> Meat
+                    <input className = "box"
                     type = "checkbox"
                     name = "meat"
                     checked = {form.meat}
@@ -178,8 +180,8 @@ const Form = ()  =>
                 </label>
 
                 {/* Veggies Checkbox */}
-                <label htmlFor = "veggies">
-                    <input
+                <label htmlFor = "veggies"> Veggie
+                    <input className = "box"
                     type = "checkbox"
                     name = "veggies"
                     checked = {form.veggies}
@@ -188,8 +190,8 @@ const Form = ()  =>
                 </label>
 
                 {/* Poultry Checkbox */}
-                <label htmlFor = "poultry">
-                    <input
+                <label htmlFor = "poultry"> Poultry
+                    <input className = "box"
                     type = "checkbox"
                     name = "poultry"
                     checked = {form.poultry}
@@ -198,8 +200,8 @@ const Form = ()  =>
                 </label>
 
                 {/* Fruit Checkbox */}
-                <label htmlFor = "fruit">
-                    <input
+                <label htmlFor = "fruit"> Fruit
+                    <input className = "box"
                     type = "checkbox"
                     name = "fruit"
                     checked = {form.fruit}
@@ -208,7 +210,7 @@ const Form = ()  =>
                 </label>
 
                 {/* Special Instructions */}
-                <label htmlFor = "special"> Customize Your Pie
+                <label className = "label" htmlFor = "special"> Customize Your Pie:
                     <input 
                     type = "text"
                     id = "special"
@@ -218,7 +220,7 @@ const Form = ()  =>
                     placeholder = "Special Instructions"
                     />
                 </label>
-                <button id = "submitBtn" disabled = {submitButtonState}>
+                <button id = "order-button" disabled = {!submitButtonState}>
                     CLICK TO SUBMIT
                 </button>
             </div>

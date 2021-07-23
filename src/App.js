@@ -8,11 +8,10 @@
 
 //Import statements
 import { Route, Switch, NavLink} from "react-router-dom";
-//import Form from "./components/Form.js";
+import Form from "./components/Form.js";
 import Home from "./components/home";
+import "./App.css";
 
-
-//write a named style and rename divs below
 
 //App() function definition, pass in callback 
 const App = () => 
@@ -20,19 +19,23 @@ const App = () =>
   //Return function
   return (
     <>
-    <div className = "head">
-      <h1 className = "h">Lambda Eats</h1>
-      <h2 className = "h">Get your coding pizza here!</h2>
+      {/* Main Div */}
+      <div className = "head">
+        <div className = "nav">
+          <NavLink exact to='/'>Home</NavLink>
+        </div>
+        <div className = "nav">
+          <NavLink to='/pizza'>Pizza</NavLink>
+        </div>
+          <h1 className = "h">Lambda Eats</h1>
+          <h2 className = "h">Get your coding pizza here!</h2>
+      </div>
 
-      <NavLink exact to='/'>Home</NavLink>
-      <NavLink to='/pizza'>Pizza</NavLink>
-    </div>
-
-    {/* Switch case */}
-    <Switch>
-      {/* <Route path = "/pizza" component = {Form}/> */}
-      <Route path = "/" component = {Home}/>
-    </Switch>
+      {/* Switch case */}
+      <Switch>
+        <Route path = "/pizza" component = {Form}/>
+        <Route path = "/" component = {Home}/>
+      </Switch>
     </>
   );
 };
