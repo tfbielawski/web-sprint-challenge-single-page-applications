@@ -24,7 +24,7 @@ export default function Home()
         console.log(history);
 
         //push the history to pizza list
-        history.push("pizza-list");
+        history.push("pizza");
     }
 
     //Return function
