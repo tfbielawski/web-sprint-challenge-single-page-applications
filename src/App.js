@@ -34,7 +34,7 @@ const App = () =>
       {/* Switch case */}
       <Switch>
         <Route path = "/pizza" component = {Form}/>
-        <Route path = "/" component = {Home}/>
+        <Route exact path = "/Home" component = {Home}/>
       </Switch>
     </>
   );
