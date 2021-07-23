@@ -149,7 +149,7 @@ const Form = ()  =>
                     onChange = {changeHandler}
                     placeholder = "name goes here"
                     />
-                
+                {/* Error reporting */}
                 {errors.name ? <p>{errors.name}</p> : null}
                 </label>
             </div>
@@ -169,6 +169,7 @@ const Form = ()  =>
                         <option value = "l">Large</option>
                     </select>
 
+                {/* Error reporting */}
                 {errors.size ? <p>{errors.name}</p> : null}
                 </label>
 
@@ -217,7 +218,7 @@ const Form = ()  =>
                 <label className = "label" htmlFor = "special"> Customize Your Pie:
                     <input 
                     type = "text"
-                    id = "special"
+                    id = "special-text"
                     name = "special"
                     value = {form.special}
                     onChange = {changeHandler}
