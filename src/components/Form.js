@@ -89,16 +89,19 @@ const Form = ()  =>
             });
     };
 
+     //Declare state variables, init to false
+     const [submitButtonState, setSubmitButtonState] = useState(false);
+
     //formSchema useEffect
     useEffect(() => 
     {
         formSchema.isValid(form).then((isFormValid) => 
         {
-          setSubmitState(isFormValid);
+          setSubmitButtonState(isFormValid);
         });
 
-        //Dependency array
-    }, [form]);
+        //Dependency arrays
+    }, [form, formSchema]);
 
 
 
@@ -106,7 +109,7 @@ const Form = ()  =>
     const changeHandler = (event) =>
     {
         event.persist();
-        validateChange(event);
+        changeValidator(event);
         setForm
         ({
             ...form, [event.target.name]: 
@@ -127,23 +130,7 @@ const Form = ()  =>
         //then get response, log changes
         .then((response) => console.log("submit changes", response));
     };
-
-
-
-    // //Order information values
-    // const orderValues = 
-    // {
-    //     name: form.name,
-    //     size: form.size,
-    //     special: form.special,
-    //     meat: form.meat,
-    //     veggies: form.veggies,
-    //     poultry: form.poultry,
-    //     fruit: form.fruit,
-    // }
-
-    //Declare state variables, init to false
-    const [submitButtonState, setSubmitButtonState] = useState(false);
+   
 
     //Return function
     return(

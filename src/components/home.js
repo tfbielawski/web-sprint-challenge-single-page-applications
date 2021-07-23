@@ -7,9 +7,9 @@
  */
 
 //Import statements
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import logo from "../Assets/Pizza.jpg"
+import React from "react";
+import { useHistory } from "react-router-dom";
+
 
 //Default Function Home definition, no params
 export default function Home()
@@ -22,6 +22,7 @@ export default function Home()
     {
         //Log history
         console.log(history);
+
         //push the history to pizza list
         history.push("pizza-list");
     }
@@ -38,7 +39,7 @@ export default function Home()
             {/* Pizza photo from assets */}
             <img
             className = "home-image"
-            src = {logo}
+            src = "https://media.istockphoto.com/photos/homemade-veggie-pizza-with-mushrooms-peppers-picture-id842082336"
             alt = "Pizza"
             />
         </div>
@@ -50,7 +51,7 @@ export default function Home()
         onClick={routeToForm}
         >
         ORDER PIZZA
-      </button>
+        </button>
     </div>
   )
 }
