@@ -41,11 +41,6 @@ const Form = ()  =>
         fruit: false,
     });
 
-
-    //Declare state variables, init to false
-    const [submitButtonState, setSubmitButtonState] = useState(false);
-
-
     //Define form schema
     const formSchema = yup.object().shape
     ({
@@ -68,11 +63,12 @@ const Form = ()  =>
     const changeValidator = (event) => 
     {
       yup
-        //Reach formSchema and event
+        //Reach for formSchema and event
         .reach(formSchema, event.target.name)
         
         //Validate checkbox
-        .validate(
+        .validate
+        (
           event.target.type === "checkbox" ? event.target.checked : event.target.value
         )
         
@@ -89,19 +85,23 @@ const Form = ()  =>
         });
     };
 
-     
-    //formSchema useEffect
-    useEffect(() => 
+    //Submit handler
+    const submitHandler = (event) =>
     {
-        formSchema.isValid(form).then((isFormValid) => 
-        {
-          setSubmitButtonState(isFormValid);
-        });
+        //Prevent default behavior on submit
+        event.preventDefault();
 
-        //Dependency arrays
-    }, [form]);
-
-
+        //Axios
+        axios
+        //Post to api with form payload
+        .post("https://reqres.in/api/orders", form)
+        //then get response, log changes
+        .then((response) => console.log("submit changes", response));
+    };
+   
+      //Declare state variables, init to false
+      const [submitButtonState, setSubmitButtonState] = useState(false);
+     
 
     //Change event handler
     const changeHandler = (event) =>
@@ -122,27 +122,25 @@ const Form = ()  =>
 
     };
 
-    //Submit handler
-    const submitHandler = (event) =>
+    //formSchema useEffect
+    useEffect(() => 
     {
-        //Prevent default behavior on submit
-        event.preventDefault();
+        
+        formSchema.isValid(form).then((isFormValid) => 
+        {
+          setSubmitButtonState(isFormValid);
+        });
 
-        //Axios
-        axios
-        //Post to api with form payload
-        .post("https://reqres.in/api/orders", form)
-        //then get response, log changes
-        .then((response) => console.log("submit changes", response));
-    };
-   
+        //Dependency arrays
+    }, []);
+
 
     //Return function
     return(
         
         // Begin form
         <form id = "pizza-form" onSubmit = {submitHandler} >
-           
+           {/* Main Div */}
             <div className = "choices">
                 {/* Name label and input */}
                 <label className = "label" htmlFor = "name"> Name:
